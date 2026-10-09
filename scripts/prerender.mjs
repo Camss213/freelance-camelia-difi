@@ -23,7 +23,7 @@ try {
     .replace('content="fr_FR"', 'content="en_GB"')
     .replace(/(<meta property="og:url" content=")[^"]+/, '$1https://freelance.camelia-difi.com/en/')
     .replace('content="Camelia Difi — Studio web indépendant"', 'content="Camelia Difi — Independent web studio"')
-    .replace('content="Camelia Difi — Studio web indépendant. Votre activité mérite un site qui lui ressemble."', 'content="Camelia Difi — Independent web studio. Your business deserves a website that feels like you."')
+    .replace('content="Camelia Difi — Studio web indépendant. Votre activité. En grand."', 'content="Camelia Difi — Independent web studio. Your business. Beautifully bold."')
     .replaceAll('"./assets/', '"../assets/')
     .replace('href="./favicon.svg"', 'href="../favicon.svg"');
   english = english.replace(/(<script type="application\/ld\+json">)([\s\S]*?)(<\/script>)/, (_, start, json, end) => {
