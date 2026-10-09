@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import Contact from './Contact.jsx';
+import Projects, { FeaturedProject } from './Projects.jsx';
 import { LanguageContext, LanguageSwitcher, useTranslation } from './i18n.jsx';
 
 import { ArrowUpRight, ArrowRight, Code2, Smartphone, Cloud, Menu, X, MapPin, Check, Plus, Minus, Download } from 'lucide-react';
 
 
-const links = (t) => [[t("Expertises"), 'expertises'], [t("Univers"), 'univers'], [t("Méthode"), 'methode'], [t("À propos"), 'apropos']];
+const links = (t) => [[t("Expertises"), 'expertises'], [t("Réalisations"), 'realisations'], [t("Méthode"), 'methode'], [t("À propos"), 'apropos']];
 const services = (t) => [
   { icon: Code2, title: t("Votre présence en ligne, pensée pour vous."), text: t("Sites vitrines, applications métier ou plateformes SaaS : je crée des expériences claires et soignées, adaptées à vos objectifs et à vos utilisateurs."), tags: [t("Sites vitrines"), t("Plateformes SaaS"), t("Refonte & évolution")], number: '01', color: 'purple' },
   { icon: Smartphone, title: t("Votre produit, dans toutes les poches."), text: t("Des applications iOS et Android fluides, connectées à votre système et accompagnées jusqu’à leur publication sur les stores."), tags: ['iOS & Android', t("Intégration API"), t("Publication stores")], number: '02', color: 'ivory' },
@@ -56,15 +57,15 @@ function Hero() {
   return <><section className="hero container" id="top">
     <div className="hero-topline"><span className="eyebrow"><span />{t("STUDIO WEB INDÉPENDANT")}</span><div className="availability"><span />{t("Disponible pour de nouvelles missions")}</div></div>
     <div className="hero-title-row"><h1><span className="hero-profession">{t("Développeuse web freelance à Lyon")}</span>{t("Votre activité.")}<br /><em>{t("En grand.")}</em></h1><StudioSeal /></div>
-    <div className="hero-bottom"><p className="hero-intro">{t("Une présence qui vous ressemble.")}<br />{t("Des sites web singuliers, des applications utiles. Je donne forme à vos idées, avec autant de soin pour le design que pour le code.")}</p><div><a className="button primary" href="#contact">{t("Parlons de votre projet")}<ArrowUpRight size={21} /></a><p className="hero-note">{t("Premier échange gratuit, sans engagement.")}</p></div><a className="explore-link" href="#univers"><span>{t("Découvrir l’univers")}</span><ArrowRight size={22} /></a></div>
-    <div className="hero-showcase"><div className="showcase-label"><span>{t("DU CARACTÈRE. JUSQU’AU DERNIER PIXEL.")}</span><span>{t("CONCEPT VISUEL · DÉMONSTRATION")}</span></div><div className="hero-browser"><div className="browser-bar"><span><i /><i /><i /></span><span>maison-alba.example</span><ArrowUpRight size={12} /></div><MockSite /></div><div className="hero-visual-note">{t("Votre prochain chapitre commence ici.")} <span>↗</span></div></div>
+    <div className="hero-bottom"><p className="hero-intro">{t("Une présence qui vous ressemble.")}<br />{t("Des sites web singuliers, des applications utiles. Je donne forme à vos idées, avec autant de soin pour le design que pour le code.")}</p><div><a className="button primary" href="#contact">{t("Parlons de votre projet")}<ArrowUpRight size={21} /></a><p className="hero-note">{t("Premier échange gratuit, sans engagement.")}</p></div><a className="explore-link" href="#realisations"><span>{t("MES RÉALISATIONS")}</span><ArrowRight size={22} /></a></div>
+    <FeaturedProject />
   </section><div className="facts"><div className="container facts-inner"><div><MapPin size={16} /><span>{t("Basée à")} <strong>Lyon</strong> {t("· Remote partout en France")}</span></div><div><Check size={16} /><span>{t("Un interlocuteur,")} <strong>{t("de l’idée au déploiement")}</strong></span></div><div><ArrowUpRight size={16} /><span>{t("Une réponse")} <strong>{t("sous 48 h")}</strong></span></div></div></div></>;
 }
 
 function Showcase() {
   const t = useTranslation();
-  return <section className="section container showcase-section" id="univers"><div className="heading-row"><SectionHeading eyebrow={t("LA SIGNATURE DU STUDIO")} title={<>{t("Des univers singuliers.")}<br /><em>{t("Des idées qui prennent forme.")}</em></>} /><p>{t("Chaque activité a sa personnalité.")}<br />{t("Votre site doit l’exprimer.")}</p></div>
-    <div className="concept-grid"><article className="concept-card"><div className="concept-frame concept-alba"><MockSite /></div><div className="concept-caption"><div><h3>Maison Alba</h3><p>{t("Concept visuel · Architecture & intérieurs")}</p></div><span>01 /</span></div></article><article className="concept-card"><div className="concept-frame concept-forma"><MockSite variant="forma" /></div><div className="concept-caption"><div><h3>Forma</h3><p>{t("Concept visuel · Design & objets")}</p></div><span>02 /</span></div></article></div>
+  return <section className="section container showcase-section" id="univers"><div className="heading-row"><SectionHeading eyebrow={t("EXPLORATIONS CRÉATIVES")} title={<>{t("Des univers singuliers.")}<br /><em>{t("Des idées qui prennent forme.")}</em></>} /><p>{t("Chaque activité a sa personnalité.")}<br />{t("Votre site doit l’exprimer.")}</p></div>
+    <div className="concept-grid"><article className="concept-card"><div className="concept-frame concept-alba"><MockSite /></div><div className="concept-caption"><div><h3>Maison Alba</h3><p>{t("Concept fictif · Proposition de design")}</p></div><span>01 /</span></div></article><article className="concept-card"><div className="concept-frame concept-forma"><MockSite variant="forma" /></div><div className="concept-caption"><div><h3>Forma</h3><p>{t("Concept fictif · Proposition de design")}</p></div><span>02 /</span></div></article></div>
     <p className="concept-disclaimer">{t("Ces explorations visuelles illustrent la direction créative du studio. Ce sont des concepts, pas des projets clients.")}</p><a className="text-link" href="https://camelia-difi.com" target="_blank" rel="noopener noreferrer">{t("Voir mes réalisations sur le portfolio")}<ArrowUpRight size={18} /></a>
   </section>;
 }
@@ -84,7 +85,7 @@ function About() { const t = useTranslation(); return <section className="contai
 
 function FAQ() { const t = useTranslation(); const [active, setActive] = useState(null); return <section className="section container faq-layout"><SectionHeading eyebrow={t("QUELQUES RÉPONSES")} title={<>{t("Vous vous demandez")}<br />{t("peut-être…")}</>} /><div className="faq-items">{questions(t).map(([question, answer], i) => <div className="faq-item" key={question}><h3><button aria-expanded={active === i} aria-controls={`answer-${i}`} onClick={() => setActive(active === i ? null : i)}>{question}{active === i ? <Minus size={19} /> : <Plus size={19} />}</button></h3><div id={`answer-${i}`} hidden={active !== i}><p>{answer}</p></div></div>)}</div></section>; }
 
-function Page() { const t = useTranslation(); return <><a className="skip-link" href="#main">{t("Aller au contenu")}</a><Header /><main id="main"><Hero /><Showcase /><Expertise /><Method /><About /><Stack /><FAQ /><Contact /></main><footer className="container footer"><Brand /><span>© {new Date().getFullYear()} Camelia Difi — EI · {t("Fait avec soin, à Lyon.")}</span><div className="footer-links"><a href={t("/mentions-legales.html")}>{t("Mentions légales")}</a><a href="#top">{t("Retour en haut")} <ArrowUpRight size={16} /></a></div></footer></>; }
+function Page() { const t = useTranslation(); return <><a className="skip-link" href="#main">{t("Aller au contenu")}</a><Header /><main id="main"><Hero /><Projects /><Expertise /><Showcase /><Method /><About /><Stack /><FAQ /><Contact /></main><footer className="container footer"><Brand /><span>© {new Date().getFullYear()} Camelia Difi — EI · {t("Fait avec soin, à Lyon.")}</span><div className="footer-links"><a href={t("/mentions-legales.html")}>{t("Mentions légales")}</a><a href="#top">{t("Retour en haut")} <ArrowUpRight size={16} /></a></div></footer></>; }
 
 
 

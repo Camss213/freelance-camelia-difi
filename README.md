@@ -1,5 +1,7 @@
 # Studio CamWeb — studio web de Camelia Difi
 
+Les trois réalisations présentées sont Cabinet MFR (`cabinet-mrf.vercel.app`), Wild Crocodile Adventure (`wild-crocodile.vercel.app`) et 11A Travels (`11a-travel.vercel.app`). Leurs captures sont enregistrées dans `public/projects` et leurs descriptions et liens dans `src/Projects.jsx`. Actualiser les captures quand les interfaces évoluent. Maison Alba et Forma sont des concepts fictifs présentés séparément dans « Explorations créatives ».
+
 Refonte du site en React avec Vite. Les composants et les contenus sont dans `src/App.jsx`, les styles responsive dans `src/styles.css`.
 
 ## Développement
