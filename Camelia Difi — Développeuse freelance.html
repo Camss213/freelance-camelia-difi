@@ -1,0 +1,923 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>
+      Camelia Difi — Développeuse freelance Full-Stack, Mobile & Cloud · Lyon
+    </title>
+    <meta
+      name="description"
+      content="Développeuse freelance full-stack, mobile et cloud à Lyon. Conception, développement et mise en production d'applications web et mobiles."
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700&display=swap"
+    />
+    <style>
+      :root {
+        box-sizing: border-box;
+        padding-top: env(safe-area-inset-top, 0px);
+        padding-bottom: env(safe-area-inset-bottom, 0px);
+        --bg: #f6f7fb;
+        --bg2: #eceef6;
+        --card: #fff;
+        --text: #0b1020;
+        --muted: #566079;
+        --accent: #2f5bea;
+        --accent-soft: rgba(47, 91, 234, 0.1);
+        --line: #dde1ee;
+        --wire: #2f5bea;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root:not([data-theme="light"]) {
+          --bg: #070b16;
+          --bg2: #0c1222;
+          --card: #0f1628;
+          --text: #eef1fa;
+          --muted: #8d97b3;
+          --accent: #6e93ff;
+          --accent-soft: rgba(110, 147, 255, 0.12);
+          --line: #1c2540;
+          --wire: #6e93ff;
+        }
+      }
+      :root[data-theme="dark"] {
+        --bg: #070b16;
+        --bg2: #0c1222;
+        --card: #0f1628;
+        --text: #eef1fa;
+        --muted: #8d97b3;
+        --accent: #6e93ff;
+        --accent-soft: rgba(110, 147, 255, 0.12);
+        --line: #1c2540;
+        --wire: #6e93ff;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+        scroll-padding-top: calc(72px + env(safe-area-inset-top, 0px));
+      }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font:
+          16px/1.7 Inter,
+          system-ui,
+          -apple-system,
+          "Segoe UI",
+          sans-serif;
+        -webkit-font-smoothing: antialiased;
+      }
+      .wrap {
+        max-width: 1120px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+      h1,
+      h2,
+      h3,
+      .logo {
+        font-family: Sora, Inter, system-ui, sans-serif;
+      }
+      header {
+        position: sticky;
+        top: env(safe-area-inset-top, 0px);
+        z-index: 10;
+        background: color-mix(in srgb, var(--bg) 82%, transparent);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--line);
+      }
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 68px;
+      }
+      .logo {
+        font-weight: 700;
+        font-size: 17px;
+        color: var(--text);
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .logo b {
+        width: 32px;
+        height: 32px;
+        border-radius: 9px;
+        background: var(--accent);
+        color: #fff;
+        display: grid;
+        place-items: center;
+        font-size: 14px;
+      }
+      .links {
+        display: flex;
+        align-items: center;
+        gap: 28px;
+      }
+      .links a {
+        color: var(--muted);
+        text-decoration: none;
+        font-size: 14.5px;
+        font-weight: 500;
+      }
+      .links a:hover {
+        color: var(--text);
+      }
+      .links a.cta {
+        color: #fff;
+        background: var(--accent);
+        padding: 9px 18px;
+        border-radius: 8px;
+        font-weight: 600;
+      }
+      @media (max-width: 760px) {
+        .links a:not(.cta) {
+          display: none;
+        }
+      }
+      .hero {
+        position: relative;
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        align-items: center;
+        min-height: calc(100vh - 68px);
+        min-height: calc(100svh - 68px);
+        padding: 56px 0;
+        gap: 20px;
+      }
+      @media (max-width: 860px) {
+        .hero {
+          grid-template-columns: 1fr;
+          min-height: 0;
+          padding: 56px 0 36px;
+        }
+      }
+      .status {
+        display: inline-flex;
+        align-items: center;
+        gap: 9px;
+        font-size: 13.5px;
+        color: var(--muted);
+        font-weight: 500;
+      }
+      .status i {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: #22c55e;
+        box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.18);
+      }
+      h1 {
+        font-size: clamp(34px, 5.4vw, 60px);
+        line-height: 1.08;
+        letter-spacing: -1.6px;
+        margin: 20px 0 22px;
+        font-weight: 700;
+      }
+      h1 em {
+        font-style: normal;
+        color: var(--accent);
+      }
+      .lead {
+        font-size: 18px;
+        color: var(--muted);
+        max-width: 540px;
+        margin: 0;
+      }
+      .btns {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 34px;
+      }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 14px 26px;
+        border-radius: 9px;
+        background: var(--accent);
+        color: #fff;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 15px;
+        border: 1px solid var(--accent);
+      }
+      .btn:hover {
+        filter: brightness(1.1);
+      }
+      .btn.alt {
+        background: transparent;
+        color: var(--text);
+        border-color: var(--line);
+      }
+      .btn.alt:hover {
+        border-color: var(--accent);
+      }
+      .scene {
+        position: relative;
+        height: min(520px, 60vw);
+        min-height: 300px;
+      }
+      #gl {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+      }
+      .facts {
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+        background: var(--bg2);
+      }
+      .facts .wrap {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 0;
+      }
+      .fact {
+        padding: 26px 24px 26px 0;
+      }
+      .fact small {
+        display: block;
+        color: var(--muted);
+        font-size: 12.5px;
+        letter-spacing: 0.9px;
+        text-transform: uppercase;
+        font-weight: 600;
+      }
+      .fact span {
+        font-family: Sora, Inter, sans-serif;
+        font-weight: 600;
+        font-size: 17px;
+      }
+      section {
+        padding: 96px 0;
+      }
+      .eyebrow {
+        color: var(--accent);
+        font-weight: 600;
+        font-size: 13px;
+        letter-spacing: 1.4px;
+        text-transform: uppercase;
+      }
+      h2 {
+        font-size: clamp(28px, 3.6vw, 42px);
+        line-height: 1.15;
+        letter-spacing: -1px;
+        margin: 12px 0 18px;
+        max-width: 720px;
+      }
+      .sub {
+        color: var(--muted);
+        max-width: 620px;
+        margin: 0 0 52px;
+        font-size: 17px;
+      }
+      .svc {
+        display: grid;
+        grid-template-columns: 70px 1fr 1.2fr;
+        gap: 24px;
+        padding: 32px 0;
+        border-top: 1px solid var(--line);
+        align-items: start;
+      }
+      .svc:last-child {
+        border-bottom: 1px solid var(--line);
+      }
+      .svc .n {
+        font-family: Sora, sans-serif;
+        color: var(--accent);
+        font-weight: 600;
+      }
+      .svc h3 {
+        margin: 0;
+        font-size: 22px;
+        letter-spacing: -0.4px;
+      }
+      .svc p {
+        margin: 0;
+        color: var(--muted);
+      }
+      .svc ul {
+        margin: 12px 0 0;
+        padding: 0;
+        list-style: none;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      .svc li {
+        font-size: 13px;
+        padding: 4px 11px;
+        border-radius: 99px;
+        background: var(--accent-soft);
+        color: var(--accent);
+        font-weight: 500;
+      }
+      @media (max-width: 760px) {
+        .svc {
+          grid-template-columns: 1fr;
+          gap: 10px;
+        }
+      }
+      .alt-bg {
+        background: var(--bg2);
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+      }
+      .stack {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+        gap: 20px;
+      }
+      .stack div {
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        padding: 24px;
+      }
+      .stack h3 {
+        margin: 0 0 14px;
+        font-size: 14px;
+        color: var(--muted);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+      .stack p {
+        margin: 0;
+        line-height: 2;
+        font-weight: 500;
+      }
+      .steps {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+        gap: 0;
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        overflow: hidden;
+        background: var(--card);
+      }
+      .step {
+        padding: 32px 28px;
+        border-right: 1px solid var(--line);
+      }
+      .step:last-child {
+        border-right: 0;
+      }
+      .step span {
+        font-family: Sora, sans-serif;
+        font-size: 13px;
+        color: var(--accent);
+        font-weight: 600;
+      }
+      .step h3 {
+        margin: 8px 0 8px;
+        font-size: 19px;
+      }
+      .step p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 15px;
+      }
+      @media (max-width: 760px) {
+        .step {
+          border-right: 0;
+          border-bottom: 1px solid var(--line);
+        }
+        .step:last-child {
+          border-bottom: 0;
+        }
+      }
+      .about {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 56px;
+        align-items: start;
+      }
+      @media (max-width: 860px) {
+        .about {
+          grid-template-columns: 1fr;
+          gap: 24px;
+        }
+      }
+      .about p {
+        color: var(--muted);
+        margin: 0 0 16px;
+        font-size: 17px;
+      }
+      .faq details {
+        border-top: 1px solid var(--line);
+        padding: 20px 0;
+      }
+      .faq details:last-child {
+        border-bottom: 1px solid var(--line);
+      }
+      .faq summary {
+        cursor: pointer;
+        font-weight: 600;
+        font-size: 17px;
+      }
+      .faq p {
+        margin: 10px 0 0;
+        color: var(--muted);
+      }
+      .contact {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 56px;
+      }
+      @media (max-width: 860px) {
+        .contact {
+          grid-template-columns: 1fr;
+          gap: 32px;
+        }
+      }
+      .mail {
+        display: inline-block;
+        margin-top: 18px;
+        font-family: Sora, sans-serif;
+        font-weight: 600;
+        font-size: 20px;
+        color: var(--accent);
+        text-decoration: none;
+      }
+      form {
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        padding: 30px;
+      }
+      label {
+        display: block;
+        font-size: 13.5px;
+        font-weight: 600;
+        margin: 0 0 6px;
+      }
+      input,
+      textarea {
+        width: 100%;
+        padding: 12px 14px;
+        border-radius: 9px;
+        border: 1px solid var(--line);
+        background: var(--bg);
+        color: var(--text);
+        font: inherit;
+        margin-bottom: 16px;
+      }
+      input:focus,
+      textarea:focus {
+        outline: 2px solid var(--accent);
+        outline-offset: 1px;
+      }
+      textarea {
+        min-height: 120px;
+        resize: vertical;
+      }
+      form button {
+        width: 100%;
+        padding: 14px;
+        border: 0;
+        border-radius: 9px;
+        background: var(--accent);
+        color: #fff;
+        font: inherit;
+        font-weight: 600;
+        cursor: pointer;
+      }
+      footer {
+        border-top: 1px solid var(--line);
+        padding: 32px 0;
+        color: var(--muted);
+        font-size: 14px;
+      }
+      footer .wrap {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+      footer a {
+        color: var(--muted);
+      }
+      .rv {
+        opacity: 0;
+        transform: translateY(16px);
+        transition:
+          opacity 0.7s,
+          transform 0.7s;
+      }
+      .rv.in {
+        opacity: 1;
+        transform: none;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .rv {
+          opacity: 1;
+          transform: none;
+          transition: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="wrap">
+        <nav>
+          <a class="logo" href="#top"><b>CD</b>Camelia Difi</a>
+          <div class="links">
+            <a href="#expertises">Expertises</a><a href="#stack">Stack</a
+            ><a href="#methode">Méthode</a><a href="#apropos">À propos</a
+            ><a class="cta" href="#contact">Me contacter</a>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main id="top">
+      <div class="wrap hero">
+        <div>
+          <div class="status"><i></i>Disponible pour de nouvelles missions</div>
+          <h1>Développeuse freelance <em>full-stack, mobile & cloud</em>.</h1>
+          <p class="lead">
+            Je conçois, développe et mets en production vos applications web et
+            mobiles, avec une infrastructure cloud fiable et évolutive. Un
+            interlocuteur unique, de l'idée au déploiement.
+          </p>
+          <div class="btns">
+            <a class="btn" href="#contact">Discuter de votre projet →</a
+            ><a class="btn alt" href="https://camelia-difi.com" rel="noopener"
+              >Consulter le portfolio</a
+            >
+          </div>
+        </div>
+        <div class="scene"><canvas id="gl" aria-hidden="true"></canvas></div>
+      </div>
+
+      <div class="facts">
+        <div class="wrap">
+          <div class="fact">
+            <small>Profil</small><span>Full-Stack · Mobile · Cloud</span>
+          </div>
+          <div class="fact">
+            <small>Localisation</small><span>Lyon · Remote</span>
+          </div>
+          <div class="fact">
+            <small>Réactivité</small><span>Réponse sous 48 h</span>
+          </div>
+          <div class="fact">
+            <small>Premier échange</small><span>Gratuit, sans engagement</span>
+          </div>
+        </div>
+      </div>
+
+      <section id="expertises">
+        <div class="wrap">
+          <div class="eyebrow">Expertises</div>
+          <h2 class="rv">
+            Une expertise technique complète, un seul interlocuteur.
+          </h2>
+          <p class="sub rv">
+            Chaque mission est cadrée sur vos objectifs métier, pas seulement
+            sur la technique.
+          </p>
+          <div class="svc rv">
+            <span class="n">01</span>
+            <h3>Développement web</h3>
+            <div>
+              <p>
+                Applications web sur mesure, performantes et sécurisées :
+                interface, API, base de données et authentification.
+              </p>
+              <ul>
+                <li>Applications métier</li>
+                <li>Plateformes SaaS</li>
+                <li>Refonte & évolution</li>
+              </ul>
+            </div>
+          </div>
+          <div class="svc rv">
+            <span class="n">02</span>
+            <h3>Applications mobiles</h3>
+            <div>
+              <p>
+                Applications iOS et Android fluides, intégrées à votre système
+                d'information et prêtes pour la publication sur les stores.
+              </p>
+              <ul>
+                <li>iOS & Android</li>
+                <li>Intégration API</li>
+                <li>Publication stores</li>
+              </ul>
+            </div>
+          </div>
+          <div class="svc rv">
+            <span class="n">03</span>
+            <h3>Cloud & DevOps</h3>
+            <div>
+              <p>
+                Architecture cloud, déploiement continu et supervision pour des
+                produits stables, scalables et maîtrisés en coûts.
+              </p>
+              <ul>
+                <li>Architecture cloud</li>
+                <li>CI/CD</li>
+                <li>Monitoring</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="stack" class="alt-bg">
+        <div class="wrap">
+          <div class="eyebrow">Stack technique</div>
+          <h2 class="rv">Des technologies éprouvées, choisies pour durer.</h2>
+          <p class="sub rv">
+            Le choix des outils dépend de votre contexte : je privilégie la
+            fiabilité et la maintenabilité.
+          </p>
+          <div class="stack rv">
+            <div>
+              <h3>Front-end</h3>
+              <p>TypeScript · React · HTML / CSS</p>
+            </div>
+            <div>
+              <h3>Back-end</h3>
+              <p>Node.js · API REST · SQL & NoSQL</p>
+            </div>
+            <div>
+              <h3>Mobile</h3>
+              <p>React Native · Flutter</p>
+            </div>
+            <div>
+              <h3>Cloud & DevOps</h3>
+              <p>AWS · Azure · GCP · Docker · CI/CD · Terraform</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="methode">
+        <div class="wrap">
+          <div class="eyebrow">Méthode</div>
+          <h2 class="rv">Un cadre clair, du premier échange à la livraison.</h2>
+          <p class="sub rv">
+            Vous savez toujours où en est le projet, ce qu'il coûte et ce qui
+            vient ensuite.
+          </p>
+          <div class="steps rv">
+            <div class="step">
+              <span>ÉTAPE 1</span>
+              <h3>Cadrage</h3>
+              <p>Analyse du besoin, des contraintes et des priorités.</p>
+            </div>
+            <div class="step">
+              <span>ÉTAPE 2</span>
+              <h3>Proposition</h3>
+              <p>Devis détaillé, planning et livrables engageants.</p>
+            </div>
+            <div class="step">
+              <span>ÉTAPE 3</span>
+              <h3>Réalisation</h3>
+              <p>Développement itératif avec démos régulières.</p>
+            </div>
+            <div class="step">
+              <span>ÉTAPE 4</span>
+              <h3>Livraison</h3>
+              <p>Mise en production, documentation et suivi.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="apropos" class="alt-bg">
+        <div class="wrap about">
+          <div>
+            <div class="eyebrow">À propos</div>
+            <h2 class="rv">Rigueur technique, sens du produit.</h2>
+          </div>
+          <div class="rv">
+            <p>
+              Basée à Lyon, je suis développeuse full-stack et mobile, avec une
+              spécialisation cloud. J'accompagne startups, PME et équipes
+              produit sur des projets où la qualité du code et la fiabilité de
+              l'infrastructure font la différence.
+            </p>
+            <p>
+              Mon approche : comprendre votre activité, proposer la solution la
+              plus simple qui réponde au besoin, et la livrer de façon
+              documentée et maintenable.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="wrap faq">
+          <div class="eyebrow">FAQ</div>
+          <h2 class="rv">Questions fréquentes</h2>
+          <p class="sub"></p>
+          <details class="rv">
+            <summary>Travaillez-vous à distance ?</summary>
+            <p>
+              Oui, en remote partout en France, et sur site à Lyon selon la
+              mission.
+            </p>
+          </details>
+          <details class="rv">
+            <summary>Comment sont calculés les tarifs ?</summary>
+            <p>
+              Au forfait pour un périmètre défini, ou au taux journalier pour
+              une mission longue. Le devis est gratuit.
+            </p>
+          </details>
+          <details class="rv">
+            <summary>Pouvez-vous reprendre un projet existant ?</summary>
+            <p>
+              Oui : audit du code et de l'infrastructure, puis plan d'action et
+              évolutions.
+            </p>
+          </details>
+          <details class="rv">
+            <summary>Quel est le délai de démarrage ?</summary>
+            <p>
+              Il dépend de mon planning. Écrivez-moi pour connaître mes
+              prochaines disponibilités.
+            </p>
+          </details>
+        </div>
+      </section>
+
+      <section id="contact" class="alt-bg">
+        <div class="wrap contact">
+          <div>
+            <div class="eyebrow">Contact</div>
+            <h2 class="rv">Parlons de votre projet.</h2>
+            <p class="sub" style="margin-bottom: 0">
+              Décrivez votre besoin en quelques lignes. Je reviens vers vous
+              sous 48 h pour un premier échange gratuit.
+            </p>
+            <a class="mail" href="mailto:cameliadifi0707@gmail.com"
+              >cameliadifi0707@gmail.com</a
+            >
+          </div>
+          <form id="f" class="rv">
+            <label for="n">Nom</label
+            ><input id="n" autocomplete="name" required /><label for="e"
+              >Email</label
+            ><input id="e" type="email" autocomplete="email" required /><label
+              for="m"
+              >Votre projet</label
+            ><textarea id="m" required></textarea
+            ><button type="submit">Envoyer ma demande</button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="wrap">
+        <span>© 2026 Camelia Difi — Développeuse freelance, Lyon</span
+        ><a href="https://camelia-difi.com" rel="noopener">camelia-difi.com</a>
+      </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+      (function () {
+        var cv = document.getElementById("gl");
+        try {
+          var col = function () {
+            return new THREE.Color(
+              getComputedStyle(document.documentElement)
+                .getPropertyValue("--wire")
+                .trim(),
+            );
+          };
+          var R = new THREE.WebGLRenderer({
+            canvas: cv,
+            alpha: true,
+            antialias: true,
+          });
+          R.setPixelRatio(Math.min(devicePixelRatio, 2));
+          var S = new THREE.Scene(),
+            C = new THREE.PerspectiveCamera(40, 1, 0.1, 100);
+          C.position.z = 8;
+          var g1 = new THREE.IcosahedronGeometry(2.2, 2),
+            g2 = new THREE.IcosahedronGeometry(1.2, 1);
+          var m1 = new THREE.LineBasicMaterial({
+              transparent: true,
+              opacity: 0.28,
+            }),
+            m2 = new THREE.LineBasicMaterial({
+              transparent: true,
+              opacity: 0.6,
+            });
+          var pm = new THREE.PointsMaterial({
+            size: 0.07,
+            transparent: true,
+            opacity: 0.9,
+          });
+          var G = new THREE.Group(),
+            a = new THREE.LineSegments(new THREE.WireframeGeometry(g1), m1),
+            b = new THREE.LineSegments(new THREE.WireframeGeometry(g2), m2),
+            p = new THREE.Points(g1, pm);
+          G.add(a, b, p);
+          S.add(G);
+          var paint = function () {
+            var c = col();
+            m1.color = c;
+            m2.color = c;
+            pm.color = c;
+          };
+          paint();
+          matchMedia("(prefers-color-scheme:dark)").addEventListener(
+            "change",
+            function () {
+              setTimeout(paint, 60);
+            },
+          );
+          var mx = 0,
+            my = 0,
+            vis = true,
+            t = 0,
+            still = matchMedia("(prefers-reduced-motion:reduce)").matches;
+          addEventListener("pointermove", function (e) {
+            mx = e.clientX / innerWidth - 0.5;
+            my = e.clientY / innerHeight - 0.5;
+          });
+          var size = function () {
+            var w = cv.clientWidth,
+              h = cv.clientHeight;
+            if (w && h) {
+              R.setSize(w, h, false);
+              C.aspect = w / h;
+              C.updateProjectionMatrix();
+            }
+          };
+          size();
+          addEventListener("resize", size);
+          new IntersectionObserver(function (e) {
+            vis = e[0].isIntersecting;
+          }).observe(cv);
+          var draw = function () {
+            if (vis) {
+              t += 0.004;
+              a.rotation.y = t;
+              a.rotation.x = t * 0.4;
+              b.rotation.y = -t * 1.6;
+              b.rotation.z = t;
+              p.rotation.y = t;
+              p.rotation.x = t * 0.4;
+              G.rotation.y += (mx * 0.6 - G.rotation.y) * 0.04;
+              G.rotation.x += (my * 0.5 - G.rotation.x) * 0.04;
+              G.position.y = Math.sin(t * 6) * 0.08;
+              R.render(S, C);
+            }
+            if (!still) requestAnimationFrame(draw);
+          };
+          draw();
+          if (still) R.render(S, C);
+        } catch (e) {
+          cv.style.display = "none";
+        }
+      })();
+      document.getElementById("f").addEventListener("submit", function (ev) {
+        ev.preventDefault();
+        var n = document.getElementById("n").value,
+          e = document.getElementById("e").value,
+          m = document.getElementById("m").value;
+        location.href =
+          "mailto:cameliadifi0707@gmail.com?subject=" +
+          encodeURIComponent("Nouveau projet – " + n) +
+          "&body=" +
+          encodeURIComponent("Nom : " + n + "\nEmail : " + e + "\n\n" + m);
+      });
+      var io = new IntersectionObserver(
+        function (es) {
+          es.forEach(function (x) {
+            if (x.isIntersecting) {
+              x.target.classList.add("in");
+              io.unobserve(x.target);
+            }
+          });
+        },
+        { threshold: 0.1 },
+      );
+      document.querySelectorAll(".rv").forEach(function (el) {
+        io.observe(el);
+      });
+    </script>
+  </body>
+</html>

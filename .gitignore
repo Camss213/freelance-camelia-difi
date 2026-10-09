@@ -1,0 +1,9 @@
+node_modules/
+.npm-cache/
+dist/
+artifacts/
+*.local
+.env
+.env.*
+!.env.example
+site-freelance*.zip
