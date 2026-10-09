@@ -9,8 +9,8 @@ try {
   const template = await readFile(path, 'utf8');
   if (!template.includes('<div id="root"></div>')) throw new Error('Missing prerender placeholder');
   await writeFile(path, template.replace('<div id="root"></div>', `<div id="root">${render('fr')}</div>`));
-  const title = 'Freelance web developer in Lyon | Camelia Difi';
-  const description = 'Freelance web developer in Lyon. Camelia Difi builds custom React applications, business tools and SaaS platforms. Full-stack, mobile and cloud. Free introductory call.';
+  const title = 'Camelia Difi · Web studio | Freelance web developer in Lyon';
+  const description = 'Camelia Difi, an independent web studio in Lyon. Custom websites, applications and redesigns. A freelance web developer supporting your business from idea to launch.';
   let english = template
     .replace('<html lang="fr">', '<html lang="en">')
     .replace(/<title>.*?<\/title>/, `<title>${title}</title>`)
@@ -22,8 +22,8 @@ try {
     .replace(/(<meta name="twitter:description" content=")[^"]+/, `$1${description}`)
     .replace('content="fr_FR"', 'content="en_GB"')
     .replace(/(<meta property="og:url" content=")[^"]+/, '$1https://freelance.camelia-difi.com/en/')
-    .replace('content="Camelia Difi — Développeuse freelance"', 'content="Camelia Difi — Freelance developer"')
-    .replace('content="Camelia Difi, développeuse web freelance à Lyon. Web, mobile et cloud."', 'content="Camelia Difi, freelance web developer in Lyon. Web, mobile and cloud."')
+    .replace('content="Camelia Difi — Studio web indépendant"', 'content="Camelia Difi — Independent web studio"')
+    .replace('content="Camelia Difi — Studio web indépendant. Votre activité mérite un site qui lui ressemble."', 'content="Camelia Difi — Independent web studio. Your business deserves a website that feels like you."')
     .replaceAll('"./assets/', '"../assets/')
     .replace('href="./favicon.svg"', 'href="../favicon.svg"');
   english = english.replace(/(<script type="application\/ld\+json">)([\s\S]*?)(<\/script>)/, (_, start, json, end) => {
@@ -31,16 +31,16 @@ try {
     for (const entity of data['@graph']) {
       if (entity.inLanguage) entity.inLanguage = 'en';
       if (entity['@type'] === 'Person') entity.jobTitle = 'Freelance full-stack, mobile and cloud developer';
-      if (entity['@type'] === 'WebSite') entity.name = 'Camelia Difi — Freelance web developer in Lyon';
+      if (entity['@type'] === 'WebSite') entity.name = 'Camelia Difi — Independent web studio in Lyon';
       if (entity['@type'] === 'WebPage') {
         entity['@id'] = 'https://freelance.camelia-difi.com/en/#webpage';
         entity.url = 'https://freelance.camelia-difi.com/en/';
         entity.name = title;
       }
       if (entity['@type'] === 'Service') {
-        entity.name = 'Custom web application development';
+        entity.name = 'Custom website and application development';
         entity.serviceType = 'Freelance web development';
-        entity.description = 'Business applications, SaaS platforms, redesign and development of React and Node.js applications.';
+        entity.description = 'Business websites, custom applications, SaaS platforms and website redesigns.';
         entity.url = 'https://freelance.camelia-difi.com/en/#expertises';
       }
     }

@@ -1,18 +1,20 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
-  <rect width="1200" height="630" fill="#f8f7f3"/>
-  <circle cx="1060" cy="230" r="265" fill="#eee8f8"/>
-  <circle cx="1060" cy="230" r="200" fill="none" stroke="#d8c9ef" stroke-width="2"/>
-  <rect x="70" y="60" width="66" height="66" rx="18" fill="#e9e3f8"/>
-  <g font-family="Arial,sans-serif">
-    <text x="79" y="105" font-size="40" font-weight="700" letter-spacing="-3" fill="#7051d6">cd.</text>
-    <text x="155" y="90" font-size="25" font-weight="700" fill="#282633">Camelia Difi</text>
-    <text x="155" y="115" font-size="13" letter-spacing="2" fill="#6e6b78">LYON · FRANCE · REMOTE</text>
-    <text x="70" y="255" font-size="68" font-weight="700" letter-spacing="-2" fill="#282633">Développeuse web</text>
-    <text x="70" y="337" font-size="68" font-weight="700" letter-spacing="-2" fill="#7051d6">freelance à Lyon.</text>
-    <text x="74" y="408" font-size="26" fill="#6e6b78">Vos idées, des applications utiles et prêtes à grandir.</text>
-    <rect x="70" y="470" width="283" height="58" rx="10" fill="#7051d6"/>
-    <text x="92" y="508" font-size="22" fill="#ffffff">Web · Mobile · Cloud</text>
-    <text x="70" y="591" font-size="20" fill="#6e6b78">freelance.camelia-difi.com</text>
-    <text x="945" y="200" font-size="95" fill="#b9a0db">✳</text>
-  </g>
+<defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#6543C6" stroke-opacity=".08"/></pattern></defs>
+<rect width="1200" height="630" fill="#F8F7F3"/>
+<rect x="820" width="380" height="630" fill="#E9E3F8"/><rect x="820" width="380" height="630" fill="url(#grid)"/>
+<circle cx="1110" cy="490" r="240" fill="none" stroke="#6543C6" stroke-opacity=".18"/>
+<circle cx="1110" cy="490" r="170" fill="none" stroke="#6543C6" stroke-opacity=".18"/>
+<rect x="64" y="52" width="68" height="68" rx="20" fill="#E9E3F8"/>
+<text x="75" y="99" font-family="Arial,sans-serif" font-size="41" font-weight="700" letter-spacing="-3" fill="#30263B">cd<tspan fill="#6543C6">.</tspan></text>
+<text x="150" y="80" font-family="Arial,sans-serif" font-size="26" font-weight="700" fill="#30263B">Camelia Difi</text>
+<text x="150" y="105" font-family="Arial,sans-serif" font-size="12" letter-spacing="2" fill="#6543C6">STUDIO WEB INDÉPENDANT</text>
+<text x="64" y="250" font-family="Arial,sans-serif" font-size="56" font-weight="700" letter-spacing="-2" fill="#30263B">Votre activité mérite</text>
+<text x="64" y="320" font-family="Arial,sans-serif" font-size="56" font-weight="700" letter-spacing="-2" fill="#30263B">un site qui lui</text>
+<text x="64" y="390" font-family="Arial,sans-serif" font-size="64" font-weight="700" letter-spacing="-2" fill="#6543C6">ressemble.</text>
+<path d="M66 411Q260 393 405 407" fill="none" stroke="#6543C6" stroke-width="3" stroke-opacity=".4" stroke-linecap="round"/>
+<text x="64" y="471" font-family="Arial,sans-serif" font-size="20" fill="#60516F">Sites web &amp; applications sur mesure · Lyon &amp; à distance</text>
+<path d="M64 534H748" stroke="#DDD5E5"/>
+<text x="64" y="576" font-family="Arial,sans-serif" font-size="18" fill="#30263B">freelance.camelia-difi.com</text>
+<text x="868" y="330" font-family="Arial,sans-serif" font-size="145" font-weight="700" letter-spacing="-12" fill="#30263B">cd<tspan fill="#6543C6">.</tspan></text>
+<circle cx="865" cy="558" r="5" fill="#6543C6"/><text x="882" y="563" font-family="Arial,sans-serif" font-size="12" fill="#60516F">CONÇU AVEC SOIN.</text>
 </svg>
