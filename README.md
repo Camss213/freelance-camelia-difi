@@ -1,4 +1,4 @@
-# Camelia Difi — site freelance
+# Diféa Studio — studio web de Camelia Difi
 
 Refonte du site en React avec Vite. Les composants et les contenus sont dans `src/App.jsx`, les styles responsive dans `src/styles.css`.
 
