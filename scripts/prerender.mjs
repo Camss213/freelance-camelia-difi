@@ -9,8 +9,8 @@ try {
   const template = await readFile(path, 'utf8');
   if (!template.includes('<div id="root"></div>')) throw new Error('Missing prerender placeholder');
   await writeFile(path, template.replace('<div id="root"></div>', `<div id="root">${render('fr')}</div>`));
-  const title = 'Diféa Studio | Camelia Difi, Freelance web developer in Lyon';
-  const description = 'Diféa Studio, an independent web studio founded by Camelia Difi in Lyon. Custom websites, applications and redesigns. A freelance web developer supporting your business from idea to launch.';
+  const title = 'Studio CamWeb | Camelia Difi, Freelance web developer in Lyon';
+  const description = 'Studio CamWeb, an independent web studio founded by Camelia Difi in Lyon. Custom websites, applications and redesigns. A freelance web developer supporting your business from idea to launch.';
   let english = template
     .replace('<html lang="fr">', '<html lang="en">')
     .replace(/<title>.*?<\/title>/, `<title>${title}</title>`)
@@ -22,8 +22,8 @@ try {
     .replace(/(<meta name="twitter:description" content=")[^"]+/, `$1${description}`)
     .replace('content="fr_FR"', 'content="en_GB"')
     .replace(/(<meta property="og:url" content=")[^"]+/, '$1https://freelance.camelia-difi.com/en/')
-    .replace('content="Diféa Studio — Studio web indépendant"', 'content="Diféa Studio — Independent web studio"')
-    .replace('content="Diféa Studio — Studio web indépendant. Votre activité. En grand."', 'content="Diféa Studio — Independent web studio. Your business. Beautifully bold."')
+    .replace('content="Studio CamWeb — Studio web indépendant"', 'content="Studio CamWeb — Independent web studio"')
+    .replace('content="Studio CamWeb — Studio web indépendant. Votre activité. En grand."', 'content="Studio CamWeb — Independent web studio. Your business. Beautifully bold."')
     .replaceAll('"./assets/', '"../assets/')
     .replace('href="./favicon.svg"', 'href="../favicon.svg"');
   english = english.replace(/(<script type="application\/ld\+json">)([\s\S]*?)(<\/script>)/, (_, start, json, end) => {
@@ -31,7 +31,7 @@ try {
     for (const entity of data['@graph']) {
       if (entity.inLanguage) entity.inLanguage = 'en';
       if (entity['@type'] === 'Person') entity.jobTitle = 'Freelance full-stack, mobile and cloud developer';
-      if (entity['@type'] === 'WebSite') entity.name = 'Diféa Studio — Independent web studio in Lyon';
+      if (entity['@type'] === 'WebSite') entity.name = 'Studio CamWeb — Independent web studio in Lyon';
       if (entity['@type'] === 'WebPage') {
         entity['@id'] = 'https://freelance.camelia-difi.com/en/#webpage';
         entity.url = 'https://freelance.camelia-difi.com/en/';
