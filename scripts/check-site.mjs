@@ -5,6 +5,15 @@ import { mkdir } from 'node:fs/promises';
 const browser = await chromium.launch({ channel: 'chrome', headless: true });
 const page = await browser.newPage();
 const errors = [];
+// Vite preview has no form backend. Simulate acceptance without sending any email.
+await page.route('http://127.0.0.1:5173/', async route => {
+  if (route.request().method() !== 'POST') return route.continue();
+  const body = new URLSearchParams(route.request().postData());
+  assert.equal(body.get('form-name'), 'contact');
+  assert.equal(body.get('language'), 'fr');
+  assert.equal(body.get('email'), 'camille@example.com');
+  await route.fulfill({ status: 200, body: 'Accepted' });
+});
 page.on('pageerror', error => errors.push(error.message));
 await mkdir('artifacts', { recursive: true });
 
@@ -51,9 +60,9 @@ try {
     await page.locator('#name').fill('Camille Test');
     await page.locator('#email').fill('camille@example.com');
     await page.locator('#message').fill('Bonjour, je souhaite créer une application métier.');
-    await page.getByRole('button', { name: 'Préparer mon e-mail' }).click();
+    await page.getByRole('button', { name: 'Envoyer mon message' }).click();
     await page.getByRole('status').waitFor();
-    assert.match(await page.getByRole('status').innerText(), /Votre e-mail est préparé/);
+    assert.match(await page.getByRole('status').innerText(), /Votre message a bien été envoyé/);
     await page.evaluate(() => window.scrollTo({ top: 0, behavior: 'instant' }));
     await page.emulateMedia({ reducedMotion: 'reduce' });
     await page.screenshot({ path: `artifacts/${name}.png`, fullPage: true });

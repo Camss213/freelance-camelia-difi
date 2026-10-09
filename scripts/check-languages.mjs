@@ -5,6 +5,15 @@ import { readFile } from 'node:fs/promises';
 const browser = await chromium.launch({ channel: 'chrome', headless: true });
 const errors = [];
 const page = await browser.newPage();
+// Mock the Netlify handler; this local check never sends a real message.
+await page.route('http://127.0.0.1:5173/', async route => {
+  if (route.request().method() !== 'POST') return route.continue();
+  const body = new URLSearchParams(route.request().postData());
+  assert.equal(body.get('form-name'), 'contact');
+  assert.equal(body.get('language'), 'en');
+  assert.equal(body.get('email'), 'camille@example.com');
+  await route.fulfill({ status: 200, body: 'Accepted' });
+});
 // Keep this local smoke check independent of external font services.
 await page.route('https://fonts.googleapis.com/**', route => route.fulfill({ contentType: 'text/css', body: '' }));
 page.on('pageerror', error => errors.push(error.message));
@@ -41,8 +50,9 @@ try {
     await page.locator('#name').fill('Camille Test');
     await page.locator('#email').fill('camille@example.com');
     await page.locator('#message').fill('I would like to build a business application.');
-    await page.getByRole('button', { name: 'Prepare my email' }).click();
-    assert.match(await page.getByRole('status').innerText(), /Your email is ready/);
+    await page.getByRole('button', { name: 'Send my message' }).click();
+    await page.getByRole('status').waitFor();
+    assert.match(await page.getByRole('status').innerText(), /Your message has been sent/);
     if (width === 390 || width === 1440) {
       await page.evaluate(() => window.scrollTo({ top: 0, behavior: 'instant' }));
       await page.screenshot({ path: `artifacts/english-${width}.png`, fullPage: true });

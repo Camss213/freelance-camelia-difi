@@ -1,4 +1,11 @@
 export const english = {
+  'Formulaire de contact': 'Contact form',
+  'Ne remplissez pas ce champ': 'Leave this field empty',
+  'Envoyer mon message': 'Send my message',
+  'Envoi en cours…': 'Sending…',
+  'Vos coordonnées servent uniquement à répondre à votre demande.': 'Your contact details are only used to respond to your enquiry.',
+  'Votre message a bien été envoyé. Je reviens vers vous sous 48 h.': 'Your message has been sent. I will get back to you within 48 hours.',
+  'L’envoi n’a pas pu être confirmé. Réessayez ou écrivez à': 'Your submission could not be confirmed. Please try again or email',
   'Univers': 'Creative world',
   'INDÉPENDANT · CRÉATIF': 'INDEPENDENT · CREATIVE',
   'Votre activité.': 'Your business.', 'En grand.': 'Beautifully bold.',
