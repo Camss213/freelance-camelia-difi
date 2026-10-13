@@ -9,8 +9,8 @@ try {
   const template = await readFile(path, 'utf8');
   if (!template.includes('<div id="root"></div>')) throw new Error('Missing prerender placeholder');
   await writeFile(path, template.replace('<div id="root"></div>', `<div id="root">${render('fr')}</div>`));
-  const title = 'Studio CamWeb | Camelia Difi, Freelance web developer in Lyon';
-  const description = 'Studio CamWeb, an independent web studio founded by Camelia Difi in Lyon. Custom websites, applications and redesigns. A freelance web developer supporting your business from idea to launch.';
+  const title = 'Camelia Difi | Freelance Web, Software & Mobile Developer in Lyon';
+  const description = 'Camelia Difi, freelance developer in Lyon: custom websites, business software and mobile apps, from idea to launch.';
   let english = template
     .replace('<html lang="fr">', '<html lang="en">')
     .replace(/<title>.*?<\/title>/, `<title>${title}</title>`)
@@ -22,25 +22,25 @@ try {
     .replace(/(<meta name="twitter:description" content=")[^"]+/, `$1${description}`)
     .replace('content="fr_FR"', 'content="en_GB"')
     .replace(/(<meta property="og:url" content=")[^"]+/, '$1https://freelance.camelia-difi.com/en/')
-    .replace('content="Studio CamWeb — Studio web indépendant"', 'content="Studio CamWeb — Independent web studio"')
-    .replace('content="Studio CamWeb — Studio web indépendant. Votre activité. En grand."', 'content="Studio CamWeb — Independent web studio. Your business. Beautifully bold."')
+    .replace('content="Camelia Difi — Développeuse freelance"', 'content="Camelia Difi — Freelance developer"')
+    .replace('content="Camelia Difi — Développeuse freelance web, logiciel et mobile."', 'content="Camelia Difi — Freelance web, software and mobile developer."')
     .replaceAll('"./assets/', '"../assets/')
     .replace('href="./favicon.svg"', 'href="../favicon.svg"');
   english = english.replace(/(<script type="application\/ld\+json">)([\s\S]*?)(<\/script>)/, (_, start, json, end) => {
     const data = JSON.parse(json);
     for (const entity of data['@graph']) {
       if (entity.inLanguage) entity.inLanguage = 'en';
-      if (entity['@type'] === 'Person') entity.jobTitle = 'Freelance full-stack, mobile and cloud developer';
-      if (entity['@type'] === 'WebSite') entity.name = 'Studio CamWeb — Independent web studio in Lyon';
+      if (entity['@type'] === 'Person') entity.jobTitle = 'Freelance web, software and mobile developer';
+      if (entity['@type'] === 'WebSite') entity.name = 'Camelia Difi — Freelance developer in Lyon';
       if (entity['@type'] === 'WebPage') {
         entity['@id'] = 'https://freelance.camelia-difi.com/en/#webpage';
         entity.url = 'https://freelance.camelia-difi.com/en/';
         entity.name = title;
       }
       if (entity['@type'] === 'Service') {
-        entity.name = 'Custom website and application development';
-        entity.serviceType = 'Freelance web development';
-        entity.description = 'Business websites, custom applications, SaaS platforms and website redesigns.';
+        entity.name = 'Custom web, software and mobile development';
+        entity.serviceType = 'Freelance web, software and mobile development';
+        entity.description = 'Custom websites, business software and mobile applications.';
         entity.url = 'https://freelance.camelia-difi.com/en/#expertises';
       }
     }
