@@ -66,6 +66,8 @@ try {
     await staticPage.goto(`http://127.0.0.1:5173${path}`);
     assert.equal(await staticPage.locator('.contact-form').getAttribute('action'), action);
     assert.equal(await staticPage.locator('.contact-form').getAttribute('method'), 'POST');
+    assert.equal(await staticPage.locator('.contact-form').getAttribute('data-netlify'), 'true');
+    assert.equal(await staticPage.locator('.contact-form').getAttribute('netlify-honeypot'), 'bot-field');
     assert.equal((await staticPage.request.get(`http://127.0.0.1:5173${action}`)).status(), 200);
   }
   await noJavaScript.close();

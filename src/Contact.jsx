@@ -45,7 +45,7 @@ export default function Contact() {
         <a className="contact-email" href="mailto:cameliadifi0707@gmail.com">cameliadifi0707@gmail.com <ArrowUpRight size={20} /></a>
         <span className="contact-location"><MapPin size={15} />{t("Lyon & partout à distance")}</span>
       </div>
-      <form className="contact-form" name="contact" method="POST" action={language === 'en' ? '/en/thank-you.html' : '/merci.html'} onSubmit={submit} aria-label={t("Formulaire de contact")} aria-busy={status === 'sending'}>
+      <form className="contact-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action={language === 'en' ? '/en/thank-you.html' : '/merci.html'} onSubmit={submit} aria-label={t("Formulaire de contact")} aria-busy={status === 'sending'}>
         <input type="hidden" name="form-name" value="contact" />
         <input type="hidden" name="language" value={language} />
         <p hidden><label>{t("Ne remplissez pas ce champ")}<input name="bot-field" tabIndex={-1} autoComplete="off" /></label></p>
